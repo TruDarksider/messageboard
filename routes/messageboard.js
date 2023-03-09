@@ -3,11 +3,21 @@ var router = express.Router();
 
 /* GET message board messages. */
 router.get('/', function(req, res, next) {
-  res.send('These will be messages someday');
+    res.render('messageboard', {
+      title: 'The Message Board'
+  })
 });
 
-router.get('/members', (req,res,next)=>{
-  res.send('eyyyyy member 420 420 420 420 heh heh heh')
+router.get('/members', function(req, res, next) {
+    res.render('messageboard', {
+      title: 'The Message Board: Member View'
+  })
+});
+
+router.get('/admins', function(req, res, next) {
+    res.render('messageboard', {
+      title: 'The Message Board: Admin View'
+  })
 });
 
 module.exports = router;

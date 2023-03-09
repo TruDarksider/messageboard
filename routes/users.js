@@ -3,11 +3,9 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
-
-router.get('/cool', (req,res,next)=>{
-  res.send('eyyyyy 420 420 420 420 heh heh heh')
+  res.render('users', {
+    title: "List of Contributors"
+  })
 });
 
 module.exports = router;
