@@ -9,8 +9,6 @@ const bcrypt = require('bcrypt');
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy;
 
-
-
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const messageboardRouter = require('./routes/messageboard')
@@ -22,21 +20,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.set('strictQuery', false);
 const mongoDB = process.env.MONGODB_URI;
+const User = require('./models/User');
+
 
 main().catch(err=>console.log(err));
 async function main(){
     await mongoose.connect(mongoDB);
 }
-
-const User = mongoose.model(
-  'User',
-  new Schema({
-    username: { type: String, required: true },
-    password: { type: String, required: true },
-    isMember: { type: Boolean },
-    isAdmin: {type: Boolean}
-  })
-)
 
 //Passport Setup
 passport.use(
