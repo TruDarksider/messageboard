@@ -1,5 +1,26 @@
+.boardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+
+li {
+  list-style: none;
+}
+
+.messageContainer {
+  background-color: tan;
+  padding: 2vh 2vw;
+}
+
+.messageInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
 .sidebar-nav {
   margin-top: 20px;
   padding: 0;
   list-style: none;
 }
+
