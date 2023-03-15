@@ -8,10 +8,15 @@
                 <li>
                     <div class="messageContainer">
                         <p><%= message.text %></p>
-                        <div class="messageInfo">
-                            <span><%= message.author %></span>
-                            <span><%= message.date %></span>
-                        </div>
+                        <% if(currentUser != undefined){ %>
+                            <div class="messageInfo">
+                                <span><%= message.author %></span>
+                                <span><%= message.date %></span>
+                            </div>
+                            <% if(currentUser.isAdmin){ %>
+                                <button>Delete Message</button>
+                            <%}%>
+                        <%}%>
                     </div>
                 </li>
                 <% }}else{ %>
