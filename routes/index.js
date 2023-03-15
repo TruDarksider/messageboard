@@ -4,6 +4,7 @@ const User = require('../models/User');
 const Message = require('../models/Message');
 const bcrypt = require('bcrypt');
 const passport = require("passport");
+const { DateTime } = require('luxon')
 const async = require('async');
 
 /* GET home page. */
@@ -20,7 +21,22 @@ router.get('/', async (req, res) => {
     data: results,
   });
 });
-   
+
+router.get('/newMessage', function(req, res, next){
+  res.render('newMessage', {
+    title: "Post a new message"
+  })
+})
+
+router.post('/newMessage', (req, res, next) => {
+  const message = new Message({
+    text: req.body.message,
+    author: req.user.username,
+    posted: DateTime.now()
+  })
+  message.save().then(res.redirect('/messageboard'))
+})
+
 router.get('/signin', (req, res) => {
   res.render('signin', {
     title: 'Sign into Message Board',
