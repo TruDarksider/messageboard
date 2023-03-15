@@ -1,6 +1,19 @@
 <%- include('templateTop') %>
-    <h1>
-        <%= title %>
-    </h1>
-    <p>Someday this will show the list of Members and Admins</p>
+    <h1><%= title %></h1>
+    <%if(user_list!=undefined){%>
+        <ul>
+            <%for( const user of user_list){%>
+                <li><%=user.username%> 
+                    <%if(user.isMember){ %>
+                        | Member
+                    <%} %>
+                    <%if(user.isAdmin){%>
+                        | Admin
+                    <%}%>
+                </li>
+            <%}%>
+        </ul>
+    <%} else { %>
+        <p>No users to display. (This is an error)</p>
+    <%}%>
     <%- include('templateBottom') %>
