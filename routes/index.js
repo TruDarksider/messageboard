@@ -1,26 +1,37 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
+const Message = require('../models/Message');
 const bcrypt = require('bcrypt');
 const passport = require("passport");
+const async = require('async');
 
 /* GET home page. */
-router.get('/', (req, res) => {
-      res.render("index", {
-        title: "Message Board Home",
-        error: null,// err,
-        data: null//results
-      });
+router.get('/', async (req, res) => {
+  let results = {
+    userCount: await User.countDocuments({}),
+    memberCount: await User.countDocuments({ isMember: true }),
+    adminCount: await User.countDocuments({ isAdmin: true }),
+    messageCount: await Message.countDocuments({}),
+  }
+  res.render("index", {
+    title: "Message Board Home",
+    error: null,//err,
+    data: results,
+  });
 });
    
 router.get('/signin', (req, res) => {
-  res.render('signin', { title: 'Sign into Message Board'});
+  res.render('signin', {
+    title: 'Sign into Message Board',
+    message: {}
+  });
 })
 
 router.post("/signin",
   passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/"
+    failureRedirect: "/signin"
   })
 );
 
