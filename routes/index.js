@@ -103,7 +103,7 @@ router.post('/signup', async (req, res, next) => {
     })
     return;
   }
-    message.save().then(res.redirect('/signin')).catch(err => next(err));
+    user.save().then(res.redirect('/signin')).catch(err => next(err));
 })
 
 router.get('/signout', (req, res, next) => {

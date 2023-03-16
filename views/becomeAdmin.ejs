@@ -1,0 +1,12 @@
+<%- include('templateTop') %>
+    <h1><%= title %></h1>
+    <p>By becoming an admin, you gain the ability to delete any message on the board. You must be very trustworty!</p>
+    <% if(incorrect){ %>
+        <p>That was not the correct password</p>
+    <% } %>
+    <form action="/messageboard/becomeAdmin" method="POST">
+        <label for="adminSecret">Admin Secret Password</label>
+        <input name="adminSecret" type="password" id="adminSecret" />
+        <button type="submit">Become an Admin</button>
+    </form>
+<%- include('templateBottom') %>
