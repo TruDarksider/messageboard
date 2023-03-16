@@ -18,7 +18,12 @@
                                 <span><%= message.date %></span>
                             </div>
                             <% if(currentUser.isAdmin){ %>
-                                <button>Delete Message</button>
+                                <form action="" method="POST">
+                                    <div class="form-group">
+                                        <input id='messageid' class="form-control" type="hidden" name="messageid" required="true" value=<%=message._id%>>
+                                        <button class="btn btn-primary">Delete Message</button>
+                                    </div>
+                                </form>
                             <%}%>
                         <%}%>
                     </div>

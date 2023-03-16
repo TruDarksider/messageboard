@@ -17,6 +17,11 @@ const messages = async (req, res, next) => {
 /* GET message board routes. */
 router.get('/', messages);
 
+router.post('/', (req, res) => {
+  Message.findByIdAndRemove(req.body.messageid).catch(err => next(err))
+  res.redirect('/');
+})
+
 router.get('/members', function(req, res, next) {
     res.render('messageboard', {
       title: 'The Message Board: Member View'
