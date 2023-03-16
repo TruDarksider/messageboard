@@ -19,7 +19,7 @@ router.get('/', messages);
 
 router.post('/', (req, res) => {
   Message.findByIdAndRemove(req.body.messageid).catch(err => next(err))
-  res.redirect('/');
+  res.redirect('/messageboard');
 })
 
 router.get('/members', function(req, res, next) {
