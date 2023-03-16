@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { body, validationResult } = require('express-validator');
 const User = require('../models/User');
 const Message = require('../models/Message');
 const bcrypt = require('bcrypt');
@@ -24,16 +25,34 @@ router.get('/', async (req, res) => {
 
 router.get('/newMessage', function(req, res, next){
   res.render('newMessage', {
-    title: "Post a new message"
+    title: "Post a new message",
+    errors: null
   })
 })
 
 router.post('/newMessage', (req, res, next) => {
+  //Validate and Sanitize
+  body('message', 'Cannot post an empty message')
+    .trim()
+    .isLength({ min: 1 })
+    .escape()
+  //Extract errors
+  const errors = validationResult(req);
+  //Message created with escaped and trimmed data
   const message = new Message({
     text: req.body.message,
     author: req.user.username,
     posted: DateTime.now()
   })
+
+  if (!errors.isEmpty()) {
+    res.render('/newMessage', {
+      title: "Post a new message",
+      errors: errors.array()
+    })
+    return;
+  }
+  //No errors so save message
   message.save().then(res.redirect('/messageboard'))
 })
 
