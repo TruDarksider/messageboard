@@ -8,4 +8,12 @@
     <button type="submit">Sign Up</button>
 </form>
 <a href="/signin">Sign In</a>
+<% if(errors?.[Symbol.iterator]){ %>
+    <ul>
+        <for(const error of errors){ %>
+            <li>
+                <%=error.msg%>
+            </li>
+    </ul>
+<% }} %>
 <%- include('templateBottom') %>

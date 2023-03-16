@@ -24,10 +24,15 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/newMessage', function(req, res, next){
-  res.render('newMessage', {
-    title: "Post a new message",
-    errors: null
-  })
+  if(req.user != undefined){
+    if (req.user.isMember || req.user.isAdmin) {
+      res.render('newMessage', {
+        title: "Post a new message",
+        errors: null
+      })
+    }} else {
+    res.redirect('/messageboard/members')
+  }
 })
 
 router.post('/newMessage', (req, res, next) => {
@@ -71,14 +76,34 @@ router.post("/signin",
 );
 
 router.get('/signup', (req, res) => {
-  res.render('signup', {title: 'Sign up for Message Board'});
+  res.render('signup', {
+    title: 'Sign up for Message Board',
+    errors: null
+  });
 })
 
 router.post('/signup', async (req, res, next) => {
+  body('username', "Cannot have an empty username")
+    .trim()
+    .isLength({ min: 1 })
+    .escape();
+  body('password', "Password cannot be empty, no other restrictions")
+    .trim()
+    .isLength({ min: 1 })
+    .escape();
+  const errors = validationResult(req);
   const user = new User({
     username: req.body.username,
     password: await bcrypt.hash(req.body.password, 10)
-  }).save().then(res.redirect('/')).catch(err => next(err));
+  });
+  if (!errors.isEmpty()) {
+    res.render('/signup', {
+      title: "Sign up for Message Board",
+      errors: errors.array()
+    })
+    return;
+  }
+    message.save().then(res.redirect('/signin')).catch(err => next(err));
 })
 
 router.get('/signout', (req, res, next) => {
