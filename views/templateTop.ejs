@@ -29,12 +29,15 @@
                     <li>
                         <a href="/messageboard/">Message Board</a>
                     </li>
+                    <% if(currentUser){ if(!currentUser.isMember){ %>
                     <li>
-                        <a href="/messageboard/members">View as Member</a>
+                        <a href="/messageboard/becomeMember">Become a Member</a>
                     </li>
+                    <% } if(!currentUser.isAdmin){ %>
                     <li>
-                        <a href="/messageboard/admins">View as Admin</a>
+                        <a href="/messageboard/becomeAdmin">Become an Admin</a>
                     </li>
+                    <% }} %>
                     <li>
                         <a href="/users">Who's Who</a>
                     </li>
