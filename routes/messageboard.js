@@ -26,10 +26,16 @@ router.post('/', (req, res) => {
 })
 
 router.get('/becomeMember', function(req, res, next) {
-    res.render('becomeMember', {
-      title: 'Become a Member',
-      incorrect: false
-  })
+  if (req.user != undefined) {
+    if (!req.user.isMember) {
+      res.render('becomeMember', {
+        title: 'Become a Member',
+        incorrect: false
+      })
+    }
+  } else {
+    res.redirect('/');
+  }
 });
 
 router.post('/becomeMember', async (req, res, next) => {
@@ -49,11 +55,17 @@ router.post('/becomeMember', async (req, res, next) => {
   }
 })
 
-router.get('/becomeAdmin', function(req, res, next) {
-  res.render('becomeAdmin', {
-    title: 'Become an Admin',
-    incorrect: false
-  })
+router.get('/becomeAdmin', function (req, res, next) {
+  if (req.user != undefined) {
+    if (!req.user.isAdmin) {
+      res.render('becomeAdmin', {
+        title: 'Become an Admin',
+        incorrect: false
+      })
+    }
+  } else {
+    res.redirect('/');
+  }
 });
 
 router.post('/becomeAdmin', async (req, res, next) => {
