@@ -24,14 +24,14 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/newMessage', function(req, res, next){
-  if(req.user != undefined){
-    if (req.user.isMember || req.user.isAdmin) {
+  if (req.user != undefined) {
+    if (res.locals.currentUser.isMember || res.locals.currentUser.isAdmin) {
       res.render('newMessage', {
         title: "Post a new message",
         errors: null
       })
     }} else {
-    res.redirect('/messageboard/members')
+    res.redirect('/messageboard')
   }
 })
 
