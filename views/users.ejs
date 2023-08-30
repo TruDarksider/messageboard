@@ -1,7 +1,7 @@
 <%- include('templateTop') %>
-    <h1><%= title %></h1>
+    <h1 class="appName"><%= title %></h1>
     <%if(user_list!=undefined){%>
-        <ul>
+        <ul class="messageContainer">
             <%for( const user of user_list){%>
                 <li><%=user.username%> 
                     <%if(user.isMember){ %>

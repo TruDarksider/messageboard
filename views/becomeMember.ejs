@@ -1,5 +1,5 @@
 <%- include('templateTop') %>
-    <h1><%= title %></h1>
+    <h1 class="appName"><%= title %></h1>
     <p>By becoming a Member, you gain access to posting new messages!</p>
     <% if(incorrect){ %>
         <p>That was not the correct password</p>
@@ -7,6 +7,6 @@
     <form action="/messageboard/becomeMember" method="POST">
         <label for="memberSecret">Member Secret Password</label>
         <input name="memberSecret" type="password" id="memberSecret" />
-        <button type="submit">Become a Member</button>
+        <button class="btn btn-primary" type="submit">Become a Member</button>
     </form>
 <%- include('templateBottom') %>

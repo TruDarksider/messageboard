@@ -26,15 +26,20 @@ a{
   color: white;
 }
 
-.appName{
+/* .appName{
   font-family: Gluten;
   color: white;
-  background-color: var(--darkBlue);
-  border: 2px solid var(--darkYellow);
+  background-color: var(--darkYellow);
+  border: 2px solid var(--darkBlue);
   border-radius: 10px;
   padding-left: 10px;
   padding-right: 10px;
-  width: 60%;
+  width: 48vw;
+} */
+
+.appName{
+  font-family: Gluten;
+  color: var(--darkBlue);
 }
 
 .boardContainer {
@@ -54,9 +59,10 @@ a{
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
-  color: #ffffff;
-  background-color: #7aa8b7;
-  border-radius: 6px;
+  color: var(--darkBlue);
+  background-color: var(--lightYellow);
+  border: 2px solid var(--lightBlue);
+  border-radius: 10px;
   outline: none;
 }
 
@@ -84,3 +90,6 @@ li {
   list-style: none;
 }
 
+ul{
+  padding-left: 0;
+}

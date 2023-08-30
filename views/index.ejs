@@ -5,14 +5,16 @@
         <% if(error){ %>
             <p>Error getting dynamic content.</p>
             <% }else{ %>
-                <p>Start exploring using the sidebar!</p>
-                <p>Data for this site includes:</p>
+                <p class="messageContainer">Start exploring using the sidebar!</p>
+                <div class="messageContainer">
+                <p>Site Data:</p>
                 <ul>
                     <li>Users: <%=data.userCount%></li>
                     <li>Members: <%=data.memberCount%></li>
                     <li>Admins: <%=data.adminCount%></li>
                     <li>Messages: <%=data.messageCount%></li>
                 </ul>
+            </div>
             <% } %>
     </h2>
 <%- include('templateBottom') %>

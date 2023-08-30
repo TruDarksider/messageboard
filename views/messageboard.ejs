@@ -1,11 +1,11 @@
 <%- include('templateTop') %>
-    <h1>
+    <h1 class="appName">
         <%= title %>
     </h1>
     <ul class="boardContainer">
         <% if(currentUser != undefined){ %>
             <% if(currentUser.isAdmin || currentUser.isMember){ %>
-                <a class="fakeButton" href="/newMessage">Post a Message</a>
+                <a class="btn btn-primary" href="/newMessage">Post a Message</a>
         <%}}%>
         <% if(messages){ %>
             <% for( const message of messages ){ %>
