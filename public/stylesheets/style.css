@@ -1,7 +1,52 @@
+@font-face{
+  font-family: RubikIso;
+  src: url(../fonts/RubikIso-Regular.ttf);
+} 
+@font-face{
+  font-family: Dosis;
+  src: url(../fonts/Dosis-VariableFont_wght.ttf);
+}
+@font-face {
+  font-family: Gluten;
+  src: url(../fonts/Gluten-VariableFont_slnt\,wght.ttf);
+}
+
+:root{
+  --darkBlue: rgb(29, 93, 155);
+  --lightBlue: rgb(117, 194, 246);
+  --darkYellow: rgb(244, 209, 96);
+  --lightYellow: rgb(251, 238, 172);
+}
+
+*{
+  font-family: Dosis;
+}
+
+a{
+  color: white;
+}
+
+.appName{
+  font-family: Gluten;
+  color: white;
+  background-color: var(--darkBlue);
+  border: 2px solid var(--darkYellow);
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 60%;
+}
+
 .boardContainer {
   display: flex;
   flex-direction: column;
   gap: 2vh;
+}
+
+.col-sm-2{
+  border: 2px solid var(--darkYellow);
+  background-color: var(--lightBlue);
+  border-radius: 10px;
 }
 
 .fakeButton {
@@ -15,13 +60,17 @@
   outline: none;
 }
 
+
+
 li {
   list-style: none;
 }
 
 .messageContainer {
-  background-color: tan;
+  background-color: var(--darkYellow);
   padding: 2vh 2vw;
+  border: 2px solid var(--darkBlue);
+  border-radius: 10px;
 }
 
 .messageInfo {
