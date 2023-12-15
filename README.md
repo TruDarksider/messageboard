@@ -1,7 +1,7 @@
 # Message Board
 Designed to showcase user creation and authentication, this app has varied functionality (and sidebar views!) based on the login status and permisions of a user. Anyone can create an account, but member and admin statuses require a specific passcode to unlock their respective functionalities.
 
-## User Permisions
+## User Permissions
 **Non-logged in user:** See the Message Board messages
 
 **Logged in user:** See who posted each message as well as the timestamp for the message.
